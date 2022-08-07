@@ -11,9 +11,12 @@ export async function execute(
     interaction: MessageComponentInteraction,
     client: customClient
 ): Promise<void> {
+    let ping = Date.now() - interaction.createdTimestamp;
+    if (ping < 0) ping *= -1;
+
     const embed = new EmbedBuilder()
         .setTitle("Latency")
-        .setDescription(`🏓**Latency** is \`${Date.now() - interaction.createdTimestamp}ms\`.\n🏸**API Latency** is \`${Math.round(client.ws.ping)}ms\`.`)
+        .setDescription(`🏓**Latency** is \`${ping}ms\`.\n🏸**API Latency** is \`${Math.round(client.ws.ping)}ms\`.`)
         .setColor(0xaaaaaa);
     
     interaction.reply({ embeds: [embed.toJSON()], ephemeral: true });
