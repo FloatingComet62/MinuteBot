@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { Client, Collection, MessageComponentInteraction } from "discord.js";
+import { Client, Collection, Message, MessageComponentInteraction } from "discord.js";
 
 export interface customClient extends Client {
     commands?: Collection<string, Command>;
@@ -15,3 +15,5 @@ export interface Event {
     needClient: boolean;
     execute(...any: any[]): Promise<void>;
 }
+
+export type Handler = (client: customClient, message: Message) => Promise<void>;
