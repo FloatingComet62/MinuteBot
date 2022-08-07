@@ -13,7 +13,7 @@ export async function execute(
 ): Promise<void> {
     const embed = new EmbedBuilder()
         .setTitle("Latency")
-        .setDescription(`🏓**Latency** is \`${interaction.createdTimestamp - Date.now()}ms\`.\n🏸**API Latency** is \`${Math.round(client.ws.ping)}ms\`.`)
+        .setDescription(`🏓**Latency** is \`${Date.now() - interaction.createdTimestamp}ms\`.\n🏸**API Latency** is \`${Math.round(client.ws.ping)}ms\`.`)
         .setColor(0xaaaaaa);
     
     interaction.reply({ embeds: [embed.toJSON()], ephemeral: true });
